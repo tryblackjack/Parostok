@@ -1,0 +1,11 @@
+Segment,Crop,Metric,Range_Min,Range_Max,Unit,Source_File,Source_Page,Verified,Not_For_Calibration,Notes
+Cereals_Grains,Winter_Wheat,Yield_Increase,5.6,32.8,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,6,true,true,"Slide shows yield increase range"
+Cereals_Grains,Winter_Wheat,Field_Germination_Increase,10,12,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,6,true,true,"Slide shows germination increase"
+Cereals_Grains,Corn,Yield_Increase,10,16,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,6,true,true,"Slide shows yield increase range"
+Cereals_Grains,Corn,Field_Germination_Energy_Increase,2,5,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,6,true,true,"Slide shows energy increase range"
+Cereals_Grains,Winter_Barley,Yield_Increase,13,13,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,6,true,true,"Single value shown"
+Cereals_Grains,Buckwheat,Yield_Increase,36,41,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,6,true,true,"Slide shows 'Up to +36-41%'"
+Vegetables_Melons,Cucumbers,Yield_Increase,33,50,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,7,true,true,"Slide shows yield increase range"
+Vegetables_Melons,Carrots_Nantes,Yield_Increase,20,41,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,7,true,true,"Slide shows yield increase range"
+Vegetables_Melons,Watermelon,Yield_Increase,45,50,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,7,true,true,"Slide shows yield increase range"
+Vegetables_Melons,Zucchini_Squash,Yield_Increase,15,50,Percent,Agri-Physics_Unleashing_Genetic_Potential.pdf,7,true,true,"Slide shows yield increase range"

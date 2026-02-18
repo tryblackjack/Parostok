@@ -1,0 +1,105 @@
+ROLE: You are Codex. Act as a senior full-stack engineer and data integrity owner. You will update an existing React simulator project.
+
+TOP PRIORITY
+Truthfulness and verifiability. Never fabricate data. Never infer missing catalog fields. Every attribute must have a source URL. Evidence dataset must be traceable to a page/table reference.
+
+WHAT YOU HAVE
+- Existing React code (AgroSim Parostok) currently using mock INITIAL_DB and mock CLOUD_UPDATE_PACK.
+- Evidence dataset (CSV) extracted from the 2003 Ukrainian methodical recommendations, Table 2.
+- Marketing summary dataset (CSV) extracted from a pitch deck (NOT for calibration).
+- assumptions.json with model parameters.
+
+WHAT TO BUILD
+A GitHub-ready monorepo:
+
+/
+  frontend/  (React, existing app updated)
+  backend/   (Python FastAPI)
+  data/      (SQLite + cache)
+  docs/
+  evidence/
+    evidence_dataset_2003_table2.csv
+    marketing_summary.csv
+    assumptions.json
+
+CORE REQUIREMENT: TWO SEPARATE DATA LAYERS
+1) Catalog DB (scraped):
+   - Contains hybrids/varieties from manufacturers catalogs (UA + US)
+   - Updated by pressing “Update Hybrid Database” button
+   - Each record includes source_url and last_seen
+
+2) Evidence DB (static/manual import):
+   - Contains only verified experimental ranges from the 2003 methodical recommendations (Table 2)
+   - This dataset is NOT scraped
+   - This dataset is used only to constrain/validate simulation ranges and to display “Evidence-based ranges” in UI
+   - Each row includes Source_File + Source_Page + Source_Table and must remain unchanged
+
+TARGET SCRAPING SOURCES (minimum)
+UA:
+- Bayer Crop Science UA – DEKALB corn catalog and product pages:
+  https://www.cropscience.bayer.ua/Products/Dekalb/Corn/corn_catalog
+
+US:
+- Bayer Crop Science US – DEKALB seed catalog:
+  https://www.cropscience.bayer.us/corn/dekalb/seed-catalog
+If JS-rendered, use Playwright fallback.
+
+COMPLIANCE
+- Respect robots.txt and Terms. If disallowed, disable the scraper and show a UI warning.
+- Implement rate limiting (1 req/sec, concurrency <=2).
+- Cache HTML snapshots to avoid refetching.
+
+BACKEND (FastAPI)
+Endpoints:
+GET  /api/catalog
+POST /api/catalog/update
+GET  /api/catalog/update/{job_id}
+GET  /api/evidence
+GET  /api/assumptions
+GET  /api/sources
+
+Persistence:
+- Use SQLite.
+- Store catalog items with provenance.
+- Store evidence dataset by importing the CSV into a table OR serving it read-only from /evidence.
+
+FRONTEND CHANGES
+- Remove CLOUD_UPDATE_PACK and any fake “API” log messages.
+- On load, fetch catalog + evidence + assumptions.
+- Update button triggers backend update job and polls progress logs.
+- Add a “Data Integrity” tab:
+   - lists sources enabled/disabled
+   - last update time
+   - counts of parsed items
+   - states clearly: simulation is modeling, evidence dataset is verified, catalog is scraped.
+
+PROVENANCE UI
+- Each hybrid/variety entry must show a clickable source link.
+- For evidence dataset, show that it comes from “2003 Methodical Recommendations Table 2” and is verified.
+
+SIMULATION MODEL
+- Keep existing deterministic curve generation but:
+  - add a toggle: Demo variability ON/OFF
+  - when OFF, remove noise completely.
+- Add an “Evidence constraint” mode:
+  - if crop exists in evidence dataset, ensure predicted ranges are not outside evidence ranges unless explicitly marked as “model extrapolation”.
+
+GIT REQUIREMENTS
+Commit series (no squashing):
+1) chore: monorepo scaffold + backend skeleton
+2) feat: sqlite persistence + base endpoints
+3) feat: update job runner + progress logs
+4) feat: UA Bayer DEKALB scraper + tests
+5) feat: US Bayer DEKALB scraper + playwright fallback + tests
+6) feat: evidence dataset integration + assumptions endpoint
+7) feat: frontend real sync + provenance UI + integrity tab
+8) docs: README + compliance + limitations
+
+DELIVERABLE
+Push to GitHub with full commit history.
+
+IMPORTANT: NO FABRICATION
+- No fake hybrids.
+- No fake FAO.
+- No fake “found 11 new hybrids” messages.
+- If parsing fails, report it honestly in logs.
