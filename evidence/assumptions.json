@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "description": "Model parameters used for simulation. These are NOT experimental facts. They can be adjusted. Evidence dataset is stored separately.",
+  "assumptions": [
+    {
+      "name": "reference_frequency_mhz",
+      "default": 2450,
+      "status": "given_in_sources",
+      "source": "Methodical recommendations mention 2450 MHz equipment class"
+    },
+    {
+      "name": "optimal_seed_working_temp_c",
+      "default_range": [30, 40],
+      "status": "given_in_sources",
+      "source": "Methodical recommendations mention typical working seed temperature ~30-40C"
+    },
+    {
+      "name": "overheat_threshold_c",
+      "default": 58,
+      "range": [50, 70],
+      "status": "assumption",
+      "source": "Not directly fixed in the provided sources; used as a safety penalty threshold."
+    },
+    {
+      "name": "noise_enabled_default",
+      "default": true,
+      "status": "engineering_choice",
+      "source": "Used for demo variability. Must be switchable OFF."
+    }
+  ]
+}
