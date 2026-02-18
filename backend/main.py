@@ -4,7 +4,6 @@ import hashlib
 import json
 import sqlite3
 import threading
-import time
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -13,6 +12,8 @@ from typing import Any
 
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
+
+from backend.scrapers.bayer_ua_dekalb import BayerUADekalbScraper
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -97,10 +98,19 @@ def source_registry() -> list[SourceStatus]:
         SourceStatus(
             id="bayer_ua_dekalb",
             market="UA",
-            enabled=False,
-            reason="Network scraping not configured in this starter; use manual import.",
+            enabled=True,
+            reason=None,
             last_run=None,
-            fields=["name", "fao", "kernel_type", "maturity_group"],
+            fields=[
+                "name",
+                "fao",
+                "grain_type",
+                "maturity_group",
+                "advantages_text",
+                "positioning.*",
+                "density.*",
+                "rating.*",
+            ],
         ),
         SourceStatus(
             id="bayer_us_dekalb",
@@ -183,10 +193,33 @@ def run_update(job_id: str, req: UpdateRequest) -> None:
         write_fallback()
         return
 
-    # Placeholder branch if sources are enabled in future
     for src in enabled_sources:
-        log(f"Fetching {src.id} catalog pages...")
-        time.sleep(0.2)
+        if src.id != "bayer_ua_dekalb":
+            log(f"Source {src.id} currently has no scraper implementation.")
+            continue
+        try:
+            log("Fetching bayer_ua_dekalb start page.")
+            scraper = BayerUADekalbScraper()
+            result = scraper.run()
+            run["counts"]["discovered"] += len(result["product_urls"])
+            log(f"Discovered catalog pages: {len(result['catalog_urls'])}")
+            log(f"Discovered product pages: {len(result['product_urls'])}")
+            if req.dry_run:
+                log("Dry-run enabled. Skipping database writes.")
+                run["counts"]["parsed"] += len(result["items"])
+                continue
+            counts = upsert_items(result["items"])
+            for k, v in counts.items():
+                run["counts"][k] += v
+            run["counts"]["parsed"] += len(result["items"])
+            log(f"Parsed products: {len(result['items'])}")
+            log(
+                "DB changes: "
+                f"added={counts['added']} updated={counts['updated']} unchanged={counts['unchanged']}"
+            )
+        except Exception as exc:
+            run["counts"]["errors"] += 1
+            log(f"Source {src.id} failed: {exc}")
 
     run["status"] = "completed"
     run["finished_at"] = utc_now()
@@ -262,10 +295,21 @@ class ManualImportPayload(BaseModel):
 
 @app.post("/api/catalog/manual-import")
 def manual_import(payload: ManualImportPayload) -> dict[str, int]:
-    added = 0
+    counts = upsert_items(payload.items)
+    return {"added": counts["added"]}
+
+
+def upsert_items(items: list[dict[str, Any]]) -> dict[str, int]:
+    counts = {"added": 0, "updated": 0, "unchanged": 0}
     with get_conn() as conn:
-        for item in payload.items:
+        for item in items:
             now = utc_now()
+            existing = conn.execute(
+                "SELECT id FROM hybrids WHERE name=? AND market=? AND source_url=?",
+                (item["name"], item["market"], item["source_url"]),
+            ).fetchone()
+            had_existing = existing is not None
+
             cur = conn.execute(
                 """INSERT OR IGNORE INTO hybrids(crop, name, brand, market, source_url, last_seen, last_updated)
                    VALUES(?,?,?,?,?,?,?)""",
@@ -280,11 +324,37 @@ def manual_import(payload: ManualImportPayload) -> dict[str, int]:
                 ),
             )
             if cur.rowcount:
-                added += 1
+                counts["added"] += 1
             hybrid_id = conn.execute(
                 "SELECT id FROM hybrids WHERE name=? AND market=? AND source_url=?",
                 (item["name"], item["market"], item["source_url"]),
             ).fetchone()[0]
+
+            attrs = item.get("attributes", [])
+            fingerprint = json.dumps(
+                sorted((a.get("key"), str(a.get("value")), a.get("evidence", "")) for a in attrs),
+                ensure_ascii=False,
+            )
+            new_hash = hashlib.sha256(fingerprint.encode("utf-8")).hexdigest()
+            existing_rows = conn.execute(
+                "SELECT key, value, evidence FROM attributes WHERE hybrid_id=?",
+                (hybrid_id,),
+            ).fetchall()
+            existing_fingerprint = json.dumps(
+                sorted((r["key"], str(r["value"]), r["evidence"] or "") for r in existing_rows),
+                ensure_ascii=False,
+            )
+            existing_hash = hashlib.sha256(existing_fingerprint.encode("utf-8")).hexdigest()
+
+            if had_existing and new_hash == existing_hash:
+                counts["unchanged"] += 1
+                conn.execute("UPDATE hybrids SET last_seen=? WHERE id=?", (now, hybrid_id))
+                continue
+
+            if had_existing:
+                counts["updated"] += 1
+            conn.execute("UPDATE hybrids SET last_seen=?, last_updated=? WHERE id=?", (now, now, hybrid_id))
+            conn.execute("DELETE FROM attributes WHERE hybrid_id=?", (hybrid_id,))
             for attr in item.get("attributes", []):
                 evidence = attr.get("evidence", "")
                 conn.execute(
@@ -302,4 +372,4 @@ def manual_import(payload: ManualImportPayload) -> dict[str, int]:
                     ),
                 )
     write_fallback()
-    return {"added": added}
+    return counts
