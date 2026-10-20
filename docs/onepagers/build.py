@@ -68,11 +68,21 @@ def ul(items):
     return "<ul>" + "".join(f"<li>{i}</li>" for i in items) + "</ul>"
 
 
-def page(lang, title, body_header, body_main, foot):
+MULTI_CSS = """
+@page { size: A4; margin: 12mm 0 12mm; }
+@page :first { margin-top: 0; }
+body { height:auto; overflow:visible; }
+footer { position:static; margin-top:6mm; }
+.keep { break-inside: avoid; }
+"""
+
+
+def page(lang, title, body_header, body_main, foot, multi=False):
+    css = CSS + (MULTI_CSS if multi else "")
     return f"""<!doctype html>
 <html lang="{lang}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title><style>{CSS}</style></head>
+<title>{esc(title)}</title><style>{css}</style></head>
 <body>{body_header}<main>{body_main}</main>
 <footer><span class="c">{esc(CONTACT)}</span><span>{esc(foot)}</span></footer>
 </body></html>"""
@@ -115,24 +125,52 @@ def bulb_svg(code):
 </svg>"""
 
 
+def line_svg(labels):
+    crates, feeder, layer, mw, eq, n, check, crates2 = labels
+    boxes = [(crates, "#ffffff"), (feeder, "#ffffff"), (layer, "#ffffff"), (mw, "#1d5aa8"),
+             (eq, "#dbe6f4"), (check, "#ffffff"), (crates2, "#ffffff")]
+    w, gap, x = 92, 14, 4
+    parts = []
+    for i, (label, fill) in enumerate(boxes):
+        ink = "#ffffff" if fill == "#1d5aa8" else "#1b2430"
+        words = label.split(" ")
+        lines = [label] if len(label) <= 13 or len(words) == 1 else [" ".join(words[:-1]), words[-1]]
+        y0 = 48 if len(lines) == 1 else 41
+        spans = "".join(f'<tspan x="{x + w / 2}" y="{y0 + 13 * k}">{esc(s)}</tspan>' for k, s in enumerate(lines))
+        parts.append(f'<rect x="{x}" y="22" width="{w}" height="44" rx="6" fill="{fill}" stroke="#1d5aa8" stroke-width="1.5"/>'
+                     f'<text font-size="11.5" text-anchor="middle" fill="{ink}">{spans}</text>')
+        if i < len(boxes) - 1:
+            ax = x + w
+            parts.append(f'<path d="M{ax + 2} 44 L{ax + gap - 3} 44" stroke="#1b2430" stroke-width="1.4" marker-end="url(#a)"/>')
+        if i == 3:
+            mw_x = x
+        x += w + gap
+    bracket = f'<path d="M{mw_x} 74 L{mw_x} 80 L{mw_x + 2 * w + gap} 80 L{mw_x + 2 * w + gap} 74" fill="none" stroke="#1d5aa8" stroke-width="1.2"/>' \
+              f'<text x="{mw_x + w + gap / 2}" y="95" font-size="11" text-anchor="middle" fill="#1d5aa8">{esc(n)}</text>'
+    return f"""<svg viewBox="0 0 {x} 100" width="100%" role="img" aria-label="{esc(mw)}">
+  <defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1b2430"/></marker></defs>
+  {''.join(parts)}{bracket}
+</svg>"""
+
+
 def tulip(code, t):
     plan = "".join(f"<tr><td class='n'>{esc(n)}</td><td>{esc(d)}</td><td class='t'>{esc(tm)}</td><td class='c'>{esc(c)}</td></tr>"
                    for n, d, tm, c in t["plan"])
+    specs = "".join(f"<tr><td>{esc(k)}</td><td class='v'>{esc(v)}</td></tr>" for k, v in t["specs"])
     main = f"""
+<section class="keep"><h2>{esc(t['h_line'])}</h2>{line_svg(t['line'])}<div class="cap">{esc(t['line_cap'])}</div></section>
 <div class="grid">
-  <section><h2>{esc(t['h_why'])}</h2>{ul([esc(x) for x in t['why']])}</section>
-  <div>{bulb_svg(code)}</div>
+  <section><h2>{esc(t['h_why'])}</h2>{ul([esc(x) for x in t['why']])}<div style="max-width:78mm;margin:3mm auto 0">{bulb_svg(code)}</div></section>
+  <section><h2>{esc(t['h_specs'])}</h2><table>{specs}</table><div class="cap">{esc(t['specs_note'])}</div></section>
 </div>
-<div class="grid">
+<section class="box keep"><h2 style="border:0;padding:0;margin-bottom:1mm">{esc(t['h_status'])}</h2>{esc(t['status'])}</section>
+<div class="grid keep" style="break-before:page">
   <section><h2>{esc(t['h_design'])}</h2>{ul(t['design'])}</section>
-  <div>
-    <section class="box"><h2 style="border:0;padding:0;margin-bottom:1mm">{esc(t['h_status'])}</h2>{esc(t['status'])}</section>
-    <section><h2>{esc(t['h_seek'])}</h2>{ul([esc(x) for x in t['seek']])}</section>
-  </div>
+  <section><h2>{esc(t['h_seek'])}</h2>{ul([esc(x) for x in t['seek']])}</section>
 </div>
-<section><h2>{esc(t['h_plan'])}</h2><table class="plan">{plan}</table><div class="total">{esc(t['plan_total'])}</div></section>
+<section class="keep"><h2>{esc(t['h_plan'])}</h2><table class="plan">{plan}</table><div class="total">{esc(t['plan_total'])}</div></section>
 """
-    return page(t["lang"], f"Parostok — {t['title']}", header(t), main, t["foot"])
+    return page(t["lang"], f"Parostok — {t['title']}", header(t), main, t["foot"], multi=True)
 
 
 def pdf(html_path, pdf_path):
