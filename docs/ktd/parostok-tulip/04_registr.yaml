@@ -79,3 +79,7 @@ gaps:
   - {id: G-STD-REV, owner: КАРЕ, need: "чинні редакції EN 60204-1, EN 55011, EN 61000-6-x, ДСТУ 3974", status: EXTERNAL_EVIDENCE_REQUIRED}
   - {id: G-INDEP, owner: нідерландський партнер, need: "незалежна організація для етапу 5", status: EXTERNAL_EVIDENCE_REQUIRED}
   - {id: G-ENV, owner: нідерландський партнер, need: "умови приміщення", status: EXTERNAL_EVIDENCE_REQUIRED}
+
+owner_decisions:
+  - {date: 2026-10-20, by: "Є. Васильєв", decision: "Межа температури ядра 42 °C не підвищується; можна лише знизити за ПМ етап 2", ref: "01_TZ.md п. 4.3.1"}
+  - {date: 2026-10-20, by: "Є. Васильєв", decision: "Плановий конверт ДКР до ~0,5 млн EUR прийнято; витрати відкриваються поетапно після PASS", ref: "05_koshtorys.md розд. 5"}
