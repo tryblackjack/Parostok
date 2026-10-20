@@ -10,7 +10,8 @@
 | ПЗ | Пояснювальна записка | `02_PZ.md` | DRAFT_FOR_OWNER_REVIEW |
 | ПМ | Програма та методика випробувань | `03_PM.md` | DRAFT_FOR_OWNER_REVIEW |
 | — | Реєстр джерел і прогалин | `04_registr.yaml` | DRAFT |
-| РР | Розрахунок енергобалансу | `calc/` | COMPUTED_FROM_ASSUMPTIONS, тести PASS |
+| РР | Розрахунок енергобалансу | `calc/energy_balance.py` | COMPUTED_FROM_ASSUMPTIONS, тести PASS |
+| КШ | Орієнтовний кошторис і графік | `05_koshtorys.md`, `calc/budget_timeline.py` | COMPUTED_FROM_ASSUMPTIONS, тести PASS |
 | СК, ВП | Складальне креслення, специфікація | — | BLOCKED: G-BASE, G-CAP, ПМ етапи 1–3 |
 | Е3 | Схема електрична принципова | — | BLOCKED: G-BASE, G-CAP |
 | ТУ, КЕ, ПС | Технічні умови, керівництво з експлуатації, паспорт | — | BLOCKED: після попередніх випробувань |
@@ -27,6 +28,7 @@
 ```bash
 cd docs/ktd/parostok-tulip/calc
 python3 energy_balance.py --write
+python3 budget_timeline.py --write
 python3 -m pytest -q
 cd .. && sha256sum -c SHA256SUMS
 ```

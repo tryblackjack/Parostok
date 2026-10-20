@@ -1,0 +1,75 @@
+{
+  "_note": "Вхідні дані кошторису і графіка ДКР «Паросток-Т». Ціни — орієнтири з відкритих джерел або ASSUMPTION; не є комерційними пропозиціями. EUR.",
+  "fx": {
+    "eur_uah": {"value": 50.53, "status": "SOURCED", "source": "НБУ, 20.10.2026 (index.minfin.com.ua, архів курсів НБУ)"},
+    "usd_uah": {"value": 44.9, "status": "SOURCED", "source": "середній банківський курс 10.10.2026 (thepage.ua); офіційний НБУ на 20.10 не знайдено"}
+  },
+  "labour": {
+    "_note": "Повна вартість місяця роботи 1 FTE, EUR. Зарплата + ЄСВ 22 % + накладні (коефіцієнт overhead).",
+    "overhead_factor": {"value": [1.3, 1.6], "status": "ASSUMPTION", "source": "оренда, енергія, адміністрування; уточнити за обліком КАРЕ"},
+    "esv_rate": {"value": 0.22, "status": "SOURCED", "source": "ставка ЄСВ роботодавця в Україні"},
+    "roles_uah_gross": {
+      "constructor": {"value": [20000, 30000], "status": "SOURCED", "source": "Одеса 2026: середня зарплата ~28,5 тис. грн (borgexpert/Prozora); вакансія інженера-проєктувальника 20-25 тис. грн (work.ua)"},
+      "rf_engineer": {"value": [35000, 70000], "status": "ASSUMPTION", "source": "НВЧ-інженер вищої кваліфікації, ~1,5-2,5x конструктора; уточнити за штатом КАРЕ"},
+      "agronomist": {"value": [20000, 35000], "status": "ASSUMPTION", "source": "за аналогією з конструктором"},
+      "plc_programmer": {"value": [30000, 60000], "status": "ASSUMPTION", "source": "ринок АСУ ТП; уточнити"}
+    }
+  },
+  "unit_prices": {
+    "bulb_eur": {"value": [0.49, 0.62], "status": "SOURCED", "source": "12+ см, $0,55-0,70/шт у ящику 500 шт (farmerbailey.com, роздріб США) x usd->eur"},
+    "mw_module_eur": {"value": [400, 2500], "status": "ASSUMPTION", "source": "блок живлення 1,5 кВт $80-150 (made-in-china.com, alibaba) + магнетрон + хвилевідний вузол, циркулятор, водяний баласт (без джерела)"}
+  },
+  "stages": [
+    {"id": "S0", "name": "Технічна пропозиція", "months": [0, 0], "labour_fte": {}, "purchases": [], "note": "виконано: цей пакет"},
+    {"id": "S1", "name": "Властивості луковиць", "months": [1, 2],
+     "labour_fte": {"constructor": 0.5, "agronomist": 0.5, "rf_engineer": 0.25},
+     "purchases": [
+       {"item": "Луковиці (2 сорти x 3 класи)", "qty": 500, "unit": "bulb_eur"},
+       {"item": "Оптоволоконний термометр 4 канали + зонди", "eur": [3600, 8500], "status": "SOURCED", "source": "Omega FOM-H201-4 $6266-6532, FOM-L201-4 $7934, Agiltron $3550-6950 (omega.com, rspsupply.com, agiltron.com)"},
+       {"item": "Діелектричні вимірювання 2450 МГц (послуга)", "eur": [2000, 8000], "status": "ASSUMPTION", "source": "ціни не опубліковано; запит до ITACA-DIMAS (UPV) або аналогічної лабораторії"},
+       {"item": "Ваги, сушильна шафа, дрібне обладнання", "eur": [800, 3000], "status": "ASSUMPTION", "source": "—"}
+     ]},
+    {"id": "S2", "name": "Поріг пошкодження бруньки + пілотна вигонка", "months": [5, 7], "season_start_months": [9, 10, 11, 12, 1],
+     "labour_fte": {"rf_engineer": 0.5, "agronomist": 0.5, "constructor": 0.25},
+     "purchases": [
+       {"item": "Луковиці (сітка режимів, 2 плечі, контроль, пілотна вигонка)", "qty": 1500, "unit": "bulb_eur"},
+       {"item": "Доопрацювання Artemida/Microstim-2 під імпульсний режим або напівпровідниковий генератор 1-2 кВт", "eur": [1750, 7000], "status": "SOURCED_WEAK", "source": "1-2 кВт твердотільні €1750-6996 (alibaba buying guide); MKS SG1024 — ціна за запитом"},
+       {"item": "Вигонка в теплиці (оренда місць, охолодження)", "eur": [2000, 8000], "status": "ASSUMPTION", "source": "—"}
+     ]},
+    {"id": "S3", "name": "Ескізний проєкт + калориметрія секції", "months": [3, 4],
+     "labour_fte": {"constructor": 1.0, "rf_engineer": 1.0},
+     "purchases": [
+       {"item": "Макет однієї НВЧ-секції (2 модулі, камера, водяне навантаження)", "eur": [3000, 10000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Стандарти IEC 60519-1, 60519-6:2022, EN 60204-1, EN 55011 та ін.", "eur": [1000, 2500], "status": "SOURCED_PARTIAL", "source": "IEC 60519-6:2022 — CHF 365 (webstore.iec.ch); решта — ASSUMPTION"}
+     ]},
+    {"id": "S4", "name": "Технічний проєкт, робоча КД", "months": [4, 6],
+     "labour_fte": {"constructor": 2.0, "rf_engineer": 0.5, "plc_programmer": 0.5},
+     "purchases": [
+       {"item": "Ліцензії САПР (CAD, за потреби ЕМ-моделювання)", "eur": [1000, 8000], "status": "ASSUMPTION", "source": "залежить від наявних ліцензій КАРЕ"}
+     ]},
+    {"id": "S5", "name": "Виготовлення дослідного зразка 0,5 т/год + попередні випробування + CE", "months": [5, 8],
+     "labour_fte": {"constructor": 1.0, "rf_engineer": 1.0, "plc_programmer": 1.0},
+     "purchases": [
+       {"item": "НВЧ-модулі 1,5 кВт", "qty": [4, 12], "unit": "mw_module_eur", "source": "кількість — calc/results.json, 0,5 т/год: 5,3-17,1 кВт / 1,5 кВт"},
+       {"item": "Камера-аплікатор, дросельні тунелі (нержавійка)", "eur": [5000, 15000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Роликовий радіопрозорий транспортер з обертанням, привід", "eur": [4000, 15000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Бункер-живильник, сингулятор", "eur": [3000, 12000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Шафа керування ПЛК/HMI, розподіл живлення", "eur": [4000, 12000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Датчики: ІЧ-пірометри, спрямовані відгалужувачі, датчики витоку", "eur": [2000, 8000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Вентиляція, водяне охолодження", "eur": [1500, 5000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Вимірювач витоку НВЧ 2,45 ГГц", "eur": [1300, 5000], "status": "SOURCED_WEAK", "source": "Holaday HI-1501 б/в $1500 (ebay); новий — за запитом (ets-lindgren.com)"},
+       {"item": "ЕМС-випробування в акредитованій лабораторії", "eur": [1000, 7500], "status": "SOURCED_WEAK", "source": "€1000-7500 (Alibaba seller blog, 2026)"},
+       {"item": "Нотифікований орган (якщо потрібен за 2023/1230)", "eur": [0, 21000], "status": "SOURCED_WEAK", "source": "€2100-21100 (Alibaba seller blog, 2026); 0 — якщо самодекларація"},
+       {"item": "Луковиці для приймальних перевірок", "qty": 2000, "unit": "bulb_eur"}
+     ]},
+    {"id": "S6", "name": "Агрономічні випробування (вигонка + відкритий ґрунт, NL)", "months": [9, 12], "season_start_months": [9, 10, 11],
+     "labour_fte": {"agronomist": 0.5, "rf_engineer": 0.25, "constructor": 0.25},
+     "purchases": [
+       {"item": "Незалежна організація (WUR Bleiswijk або аналог)", "eur": [20000, 60000], "status": "ASSUMPTION", "source": "ціни не опубліковано; запит до WUR Bleiswijk"},
+       {"item": "Доставка зразка в NL і назад, монтаж", "eur": [3000, 10000], "status": "ASSUMPTION", "source": "—"},
+       {"item": "Луковиці для досліду", "qty": 5000, "unit": "bulb_eur"}
+     ]}
+  ],
+  "contingency": {"value": [0.2, 0.3], "status": "ENGINEERING_CHOICE", "source": "резерв на непередбачене для ДКР з неперевіреною фізикою"},
+  "start": {"value": "2026-11", "status": "ASSUMPTION", "source": "найраніший реалістичний старт після рішення власника"}
+}

@@ -1,0 +1,267 @@
+{
+  "status": "COMPUTED_FROM_ASSUMPTIONS",
+  "labour_month_eur": {
+    "constructor": [
+      628,
+      1159
+    ],
+    "rf_engineer": [
+      1099,
+      2704
+    ],
+    "agronomist": [
+      628,
+      1352
+    ],
+    "plc_programmer": [
+      942,
+      2318
+    ]
+  },
+  "stages": [
+    {
+      "id": "S0",
+      "name": "Технічна пропозиція",
+      "labour_eur": [
+        0,
+        0
+      ],
+      "purchases_eur": [
+        0,
+        0
+      ],
+      "total_eur": [
+        0,
+        0
+      ],
+      "cumulative_eur": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "S1",
+      "name": "Властивості луковиць",
+      "labour_eur": [
+        902,
+        3863
+      ],
+      "purchases_eur": [
+        6645,
+        19810
+      ],
+      "total_eur": [
+        7547,
+        23673
+      ],
+      "cumulative_eur": [
+        7547,
+        23673
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "Поріг пошкодження бруньки + пілотна вигонка",
+      "labour_eur": [
+        5100,
+        16225
+      ],
+      "purchases_eur": [
+        4485,
+        15930
+      ],
+      "total_eur": [
+        9585,
+        32155
+      ],
+      "cumulative_eur": [
+        17133,
+        55828
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "Ескізний проєкт + калориметрія секції",
+      "labour_eur": [
+        5179,
+        15452
+      ],
+      "purchases_eur": [
+        4000,
+        12500
+      ],
+      "total_eur": [
+        9179,
+        27952
+      ],
+      "cumulative_eur": [
+        26312,
+        83780
+      ]
+    },
+    {
+      "id": "S4",
+      "name": "Технічний проєкт, робоча КД",
+      "labour_eur": [
+        9102,
+        28973
+      ],
+      "purchases_eur": [
+        1000,
+        8000
+      ],
+      "total_eur": [
+        10102,
+        36973
+      ],
+      "cumulative_eur": [
+        36414,
+        120753
+      ]
+    },
+    {
+      "id": "S5",
+      "name": "Виготовлення дослідного зразка 0,5 т/год + попередні випробування + CE",
+      "labour_eur": [
+        13340,
+        49447
+      ],
+      "purchases_eur": [
+        24380,
+        131740
+      ],
+      "total_eur": [
+        37720,
+        181187
+      ],
+      "cumulative_eur": [
+        74134,
+        301940
+      ]
+    },
+    {
+      "id": "S6",
+      "name": "Агрономічні випробування (вигонка + відкритий ґрунт, NL)",
+      "labour_eur": [
+        6709,
+        19702
+      ],
+      "purchases_eur": [
+        25450,
+        73100
+      ],
+      "total_eur": [
+        32159,
+        92802
+      ],
+      "cumulative_eur": [
+        106293,
+        394742
+      ]
+    }
+  ],
+  "to_gate_S2_eur": [
+    17133,
+    55828
+  ],
+  "to_gate_S2_with_contingency_eur": [
+    20560,
+    72576
+  ],
+  "total_eur": [
+    106293,
+    394742
+  ],
+  "total_with_contingency_eur": [
+    127551,
+    513164
+  ],
+  "schedule_fast": [
+    {
+      "id": "S0",
+      "start": "2026-11",
+      "end": "2026-11",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S1",
+      "start": "2026-11",
+      "end": "2026-12",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S2",
+      "start": "2026-12",
+      "end": "2027-05",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S3",
+      "start": "2027-05",
+      "end": "2027-08",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S4",
+      "start": "2027-08",
+      "end": "2027-12",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S5",
+      "start": "2027-12",
+      "end": "2028-05",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S6",
+      "start": "2028-09",
+      "end": "2029-06",
+      "idle_months_waiting_season": 4
+    }
+  ],
+  "schedule_slow": [
+    {
+      "id": "S0",
+      "start": "2026-11",
+      "end": "2026-11",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S1",
+      "start": "2026-11",
+      "end": "2027-01",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S2",
+      "start": "2027-01",
+      "end": "2027-08",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S3",
+      "start": "2027-08",
+      "end": "2027-12",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S4",
+      "start": "2027-12",
+      "end": "2028-06",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S5",
+      "start": "2028-06",
+      "end": "2029-02",
+      "idle_months_waiting_season": 0
+    },
+    {
+      "id": "S6",
+      "start": "2029-09",
+      "end": "2030-09",
+      "idle_months_waiting_season": 7
+    }
+  ]
+}
