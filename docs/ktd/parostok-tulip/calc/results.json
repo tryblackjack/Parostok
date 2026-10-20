@@ -74,6 +74,10 @@
         5.3,
         17.1
       ],
+      "modules_needed": [
+        4,
+        12
+      ],
       "mains_for_mw_kw": [
         7.0,
         26.3
@@ -89,6 +93,10 @@
         10.5,
         34.1
       ],
+      "modules_needed": [
+        8,
+        23
+      ],
       "mains_for_mw_kw": [
         14.0,
         52.5
@@ -103,6 +111,10 @@
       "mw_generator_output_kw": [
         21.0,
         68.3
+      ],
+      "modules_needed": [
+        15,
+        46
       ],
       "mains_for_mw_kw": [
         28.1,

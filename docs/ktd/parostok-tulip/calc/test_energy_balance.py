@@ -27,3 +27,10 @@ def test_power_monotonic_in_throughput():
     inp = json.loads((HERE / "inputs.json").read_text(encoding="utf-8"))
     p = [row["absorbed_kw"][1] for row in compute(inp)["power"]]
     assert p == sorted(p)
+
+
+def test_modules_cover_unrounded_output():
+    inp = json.loads((HERE / "inputs.json").read_text(encoding="utf-8"))
+    one = next(r for r in compute(inp)["power"] if r["throughput_t_per_h"] == 1.0)
+    # 7 x 1.5 kW = 10.5 kW < 10.52 kW unrounded lower bound
+    assert one["modules_needed"] == [8, 23]

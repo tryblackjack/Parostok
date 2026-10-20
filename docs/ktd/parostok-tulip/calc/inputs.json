@@ -122,5 +122,10 @@
     "value": 38,
     "status": "SOURCED",
     "source": "Клас 12 см: d = C/pi = 38.2 мм (S-GRADE)"
+  },
+  "mw_module_kw": {
+    "value": 1.5,
+    "status": "SOURCED",
+    "source": "модуль 1,5 кВт установок Artemida / Microstim-2 (S-INFO-EN с. 4)"
   }
 }

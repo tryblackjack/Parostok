@@ -52,13 +52,16 @@ def compute(inp):
     eta_lo = eta_m[0] * eta_c[0]
     eta_hi = eta_m[1] * eta_c[1]
 
+    module_kw = inp["mw_module_kw"]["value"]
     power = []
     for g in inp["throughput_t_per_h"]["value"]:
         absorbed = [q_lo * g, q_hi * g]
+        gen = [absorbed[0] / eta_c[1], absorbed[1] / eta_c[0]]
         power.append({
             "throughput_t_per_h": g,
             "absorbed_kw": [round(absorbed[0], 1), round(absorbed[1], 1)],
-            "mw_generator_output_kw": [round(absorbed[0] / eta_c[1], 1), round(absorbed[1] / eta_c[0], 1)],
+            "mw_generator_output_kw": [round(gen[0], 1), round(gen[1], 1)],
+            "modules_needed": [math.ceil(gen[0] / module_kw), math.ceil(gen[1] / module_kw)],
             "mains_for_mw_kw": [round(absorbed[0] / eta_hi, 1), round(absorbed[1] / eta_lo, 1)],
         })
 
