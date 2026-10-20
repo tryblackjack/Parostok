@@ -1,0 +1,142 @@
+{
+  "status": "COMPUTED_FROM_ASSUMPTIONS",
+  "cp_kj_kgk": [
+    2.683,
+    3.353
+  ],
+  "delta_t_k": [
+    12,
+    22
+  ],
+  "specific_energy_kwh_per_t": [
+    8.94,
+    20.49
+  ],
+  "overall_efficiency": [
+    0.39,
+    0.637
+  ],
+  "grades": [
+    {
+      "grade_cm": "10/11",
+      "diameter_mm": [
+        31.8,
+        35.0
+      ],
+      "mass_g": [
+        10.1,
+        24.7
+      ],
+      "radius_to_penetration_depth": [
+        1.77,
+        1.95
+      ]
+    },
+    {
+      "grade_cm": "11/12",
+      "diameter_mm": [
+        35.0,
+        38.2
+      ],
+      "mass_g": [
+        13.5,
+        32.1
+      ],
+      "radius_to_penetration_depth": [
+        1.95,
+        2.12
+      ]
+    },
+    {
+      "grade_cm": "12/14",
+      "diameter_mm": [
+        38.2,
+        44.6
+      ],
+      "mass_g": [
+        17.5,
+        51.0
+      ],
+      "radius_to_penetration_depth": [
+        2.12,
+        2.48
+      ]
+    }
+  ],
+  "power": [
+    {
+      "throughput_t_per_h": 0.5,
+      "absorbed_kw": [
+        4.5,
+        10.2
+      ],
+      "mw_generator_output_kw": [
+        5.3,
+        17.1
+      ],
+      "mains_for_mw_kw": [
+        7.0,
+        26.3
+      ]
+    },
+    {
+      "throughput_t_per_h": 1.0,
+      "absorbed_kw": [
+        8.9,
+        20.5
+      ],
+      "mw_generator_output_kw": [
+        10.5,
+        34.1
+      ],
+      "mains_for_mw_kw": [
+        14.0,
+        52.5
+      ]
+    },
+    {
+      "throughput_t_per_h": 2.0,
+      "absorbed_kw": [
+        17.9,
+        41.0
+      ],
+      "mw_generator_output_kw": [
+        21.0,
+        68.3
+      ],
+      "mains_for_mw_kw": [
+        28.1,
+        105.1
+      ]
+    }
+  ],
+  "conveyor_monolayer": [
+    {
+      "throughput_t_per_h": 0.5,
+      "bulbs_per_h": 20000,
+      "belt_speed_mm_s": 13.6,
+      "mw_zone_length_m": [
+        0.68,
+        1.49
+      ]
+    },
+    {
+      "throughput_t_per_h": 1.0,
+      "bulbs_per_h": 40000,
+      "belt_speed_mm_s": 27.1,
+      "mw_zone_length_m": [
+        1.36,
+        2.98
+      ]
+    },
+    {
+      "throughput_t_per_h": 2.0,
+      "bulbs_per_h": 80000,
+      "belt_speed_mm_s": 54.2,
+      "mw_zone_length_m": [
+        2.71,
+        5.97
+      ]
+    }
+  ]
+}

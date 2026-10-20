@@ -1,0 +1,81 @@
+# Реєстр джерел і прогалин пакета ПРТ-Т (редакція 0.1, 2026-10-20).
+# Статуси джерел: GOVERNING / SUPPORTING / OUT_OF_SCOPE / CONFLICTING_UNRESOLVED.
+
+sources:
+  - id: S-INFO-EN
+    title: "Research programme on biostimulation and decontamination of agrarian culture seeds using microwave field (STCU 1400, 2000-2001)"
+    file: info_en_compressed.pdf (надано власником 2026-10-20, у репозиторій не додано)
+    sha256: d3ec296230d3170f8622236068e913f678e6aa5c7660ab355c76ebeb3baa99e6
+    pages_used: [4, 5, 13, 14, 15, 16, 17, 18, 19]
+    status: GOVERNING   # для параметрів наявних установок; для луковиць — OUT_OF_SCOPE
+  - id: S-ASSUMP
+    file: evidence/assumptions.json
+    status: SUPPORTING
+  - id: S-TABLE2
+    file: evidence/evidence_dataset_2003_table2.csv
+    status: SUPPORTING   # тільки насіння
+  - id: S-PROFILE
+    file: grantwriter_kare.zip → examples/profiles/parostok_kare.yaml
+    status: SUPPORTING
+  - id: S-HWT-WUR
+    url: https://research.wur.nl/en/publications/controlling-tulip-stem-nematodes-in-tulip-bulbs-by-a-hot-water-tr
+    note: ">~45 °C вважається шкідливим; 47 °C 4 год переноситься після 1 тижня при 30 °C"
+    status: SUPPORTING
+  - id: S-HWT-JON
+    url: https://journals.flvc.org/jon/article/view/66560/64228
+    note: "D. dipsaci in vitro: 100 % загибель за 150/60/15 хв при 44/46/48 °C (нарцис)"
+    status: SUPPORTING
+  - id: S-GRADE
+    url: [https://blog.dutch-bulbs.com/choosing-tulip-bulbs-by-size-comparing-standard-and-extra-size-planting-material/, https://www.dutchgrown.com/blogs/the-dutchgrown-blog/how-flower-bulbs-are-measured]
+    status: SUPPORTING
+  - id: S-PEN
+    url: https://www.pueschner.com/en/microwave-technology/penetration-depths
+    note: "картопля ~0,9 см при 2450 МГц — аналог"
+    status: SUPPORTING
+  - id: S-SPHERE
+    url: [https://agris.fao.org/search/en/records/65dfbee06eef00c2cea34533, https://shareok.org/handle/11244/325027, https://www.comsol.fr/paper/low-temperature-microwave-treatment-of-sphere-materials-43153]
+    status: SUPPORTING
+  - id: S-SIEBEL
+    note: "Формула Siebel cp = 3,35w + 0,84 кДж/(кг·К), ASHRAE Refrigeration Handbook; редакцію не звірено"
+    status: SUPPORTING
+  - id: S-STORE
+    url: https://ishs.org/ishs-article/109_19/
+    status: SUPPORTING
+  - id: S-ETHYL
+    url: https://hortscans.ces.ncsu.edu/uploads/e/t/ethylene_51a512359fb6c.pdf
+    status: SUPPORTING
+  - id: S-IEC60519
+    url: https://connect.snv.ch/en/iec-60519-6-2011-ed3
+    note: "ред. 3:2011 скасована 2022-01-20, чинна ред. 4:2022; текст не придбано"
+    status: SUPPORTING
+  - id: S-ICNIRP
+    url: https://arxiv.org/pdf/2602.08477
+    note: "вторинне джерело: 50 Вт/м² професійне при 2,45 ГГц; звірити з ICNIRP 2020 (Health Physics)"
+    status: SUPPORTING
+  - id: S-MACHREG
+    url: https://osha.europa.eu/el/legislation/directive/regulation-20231230eu-machinery
+    status: SUPPORTING
+  - id: S-SR2025
+    title: "Suzuki N. et al. Microwave pre-stimulation methodology for plant growth promotion. Scientific Reports 15:13903 (2025)"
+    file: Microwave_pre-stimulation_methodology_for_plant_growth_promotion___Scientific_Reports.pdf (надано власником 2026-10-20, у репозиторій не додано)
+    sha256: 3e8a1353b0c89b62c4c79ae5cebebd2c4a4e5ce4f22e57da216fe850a0d98f9f
+    note: "Arabidopsis thaliana, проростки 14 діб, 2,45 ГГц, одномодовий аплікатор; ріст прискорено при 23 Вт з нестабільною імпульсною генерацією, при 30 Вт ефекту немає; температура не зросла, HSP не індуковані. Луковиць і тюльпана немає"
+    status: SUPPORTING   # для принципу конструкції (імпульсний/нетепловий режим); для ефекту на тюльпані — OUT_OF_SCOPE
+  - id: S-OWNER-PASTE-2026-10-20
+    note: "Зведення від іншої моделі, надіслане власником. Перевірено: MDPI Foods 12(12):2344 — лілія Lilium lancifolium, сушіння (тканина гине) → OUT_OF_SCOPE; IntechOpen 69587 — луковиці не згадує → OUT_OF_SCOPE; Nature s41598-025-90859-7 — прочитано після надання PDF, див. S-SR2025: Arabidopsis, не луковиці"
+    status: OUT_OF_SCOPE
+
+gaps:
+  - {id: G-BASE, owner: КАРЕ, need: "КД генераторного модуля Microstim-2/Artemida, даташит магнетрона, ревізія", blocks: "СК, ВП, Е3", status: EXTERNAL_EVIDENCE_REQUIRED}
+  - {id: G-MODES, owner: КАРЕ, need: "таблиця режимів 1..12 (потужність, час) наявних установок", blocks: "план етапу 2", status: EXTERNAL_EVIDENCE_REQUIRED}
+  - {id: G-CAP, owner: власник + нідерландський партнер, need: "цільова продуктивність, т/год", blocks: "кількість модулів N, Е3, економіка", status: OWNER_DECISION_REQUIRED}
+  - {id: G-WINDOW, owner: власник + агроном, need: "момент обробки щодо стадії бруньки", blocks: "ПМ етап 2", status: OWNER_DECISION_REQUIRED}
+  - {id: G-MOIST, owner: ПМ етап 1, need: вологість, status: PHYSICAL_VALIDATION_REQUIRED}
+  - {id: G-DENS, owner: ПМ етап 1, need: "густина, маса, форма", status: PHYSICAL_VALIDATION_REQUIRED}
+  - {id: G-ETA, owner: ПМ етап 3, need: "ККД аплікатора", status: PHYSICAL_VALIDATION_REQUIRED}
+  - {id: G-DROP, owner: ПМ етап 1/4, need: "допустима висота падіння", status: PHYSICAL_VALIDATION_REQUIRED}
+  - {id: G-TIN, owner: ПМ етап 2, need: "допустимий діапазон вхідної температури", status: PHYSICAL_VALIDATION_REQUIRED}
+  - {id: G-IEC-TEXT, owner: КАРЕ, need: "придбати IEC 60519-1, 60519-6:2022", status: EXTERNAL_EVIDENCE_REQUIRED}
+  - {id: G-STD-REV, owner: КАРЕ, need: "чинні редакції EN 60204-1, EN 55011, EN 61000-6-x, ДСТУ 3974", status: EXTERNAL_EVIDENCE_REQUIRED}
+  - {id: G-INDEP, owner: нідерландський партнер, need: "незалежна організація для етапу 5", status: EXTERNAL_EVIDENCE_REQUIRED}
+  - {id: G-ENV, owner: нідерландський партнер, need: "умови приміщення", status: EXTERNAL_EVIDENCE_REQUIRED}
