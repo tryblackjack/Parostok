@@ -39,7 +39,7 @@ EQUIPMENT = {
         "h_specs": "Key specifications (current model)",
         "h_evidence": "Evidence to date",
         "evidence": [
-            "<b>Independent laboratory, April 2026</b> (Plant Health Institute, Ukravit Science Park; DSTU 4138-2002): "
+            "<b>Independent laboratory, April 2026</b> (Plant Health Institute, Ukravit Science Park; commissioned by KARE; DSTU 4138-2002): "
             "36 corn seed samples from 6 lots, 5 modes — uniform root development, no signs of suppression.",
             "<b>Weaker seed gains most:</b> in the same test the lowest lot (86 % germination) gained 6.2 points, "
             "while lots at 90–92 % changed by −1.6 to +1.6 points.",
@@ -51,6 +51,7 @@ EQUIPMENT = {
         "h_for": "For whom",
         "for": "Seed producers and processors, cooperatives and large farms — especially for seed lots "
                "below their germination standard.",
+        "photo": "Laboratory germination test of the corn seed lots, April 2026.",
         "foot": "October 2026. Figures are the company’s own unless marked as independent.",
     },
     "fr": {
@@ -67,7 +68,7 @@ EQUIPMENT = {
         "h_specs": "Caractéristiques principales (modèle actuel)",
         "h_evidence": "Résultats à ce jour",
         "evidence": [
-            "<b>Laboratoire indépendant, avril 2026</b> (Plant Health Institute, Ukravit Science Park ; DSTU 4138-2002) : "
+            "<b>Laboratoire indépendant, avril 2026</b> (Plant Health Institute, Ukravit Science Park ; sur commande de KARE ; DSTU 4138-2002) : "
             "36 échantillons de semences de maïs issus de 6 lots, 5 modes — développement racinaire homogène, aucun signe d’inhibition.",
             "<b>Les semences faibles gagnent le plus :</b> dans ce même essai, le lot le plus faible (86 % de germination) a gagné "
             "6,2 points, tandis que les lots à 90–92 % ont varié de −1,6 à +1,6 point.",
@@ -79,6 +80,7 @@ EQUIPMENT = {
         "h_for": "Pour qui",
         "for": "Producteurs et conditionneurs de semences, coopératives et grandes exploitations — en particulier pour "
                "les lots de semences sous la norme de germination.",
+        "photo": "Test de germination en laboratoire des lots de semences de maïs, avril 2026.",
         "foot": "Octobre 2026. Les chiffres sont ceux de l’entreprise, sauf mention « indépendant ».",
     },
     "nl": {
@@ -95,7 +97,7 @@ EQUIPMENT = {
         "h_specs": "Belangrijkste specificaties (huidig model)",
         "h_evidence": "Resultaten tot nu toe",
         "evidence": [
-            "<b>Onafhankelijk laboratorium, april 2026</b> (Plant Health Institute, Ukravit Science Park; DSTU 4138-2002): "
+            "<b>Onafhankelijk laboratorium, april 2026</b> (Plant Health Institute, Ukravit Science Park; in opdracht van KARE; DSTU 4138-2002): "
             "36 stalen maïszaad uit 6 partijen, 5 standen — gelijkmatige wortelontwikkeling, geen tekenen van remming.",
             "<b>Zwakker zaad wint het meest:</b> in dezelfde test won de zwakste partij (86 % kieming) 6,2 punten, "
             "terwijl partijen van 90–92 % tussen −1,6 en +1,6 punten veranderden.",
@@ -107,6 +109,7 @@ EQUIPMENT = {
         "h_for": "Voor wie",
         "for": "Zaadproducenten en -verwerkers, coöperaties en grote landbouwbedrijven — vooral voor zaadpartijen "
                "onder hun kiemnorm.",
+        "photo": "Kiemtest in het laboratorium van de partijen maïszaad, april 2026.",
         "foot": "Oktober 2026. Cijfers zijn die van het bedrijf, tenzij als onafhankelijk aangeduid.",
     },
 }

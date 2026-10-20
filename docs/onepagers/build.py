@@ -37,6 +37,7 @@ h1 { font-size:19pt; line-height:1.15; margin:5mm 0 2.5mm; font-weight:750; }
 main { padding:6mm 14mm 0; }
 h2 { font-size:10.4pt; color:var(--blue-dark); margin:0 0 2mm; padding-bottom:1.2mm; border-bottom:1.5px solid var(--blue); }
 .grid { display:grid; grid-template-columns: 1fr 1fr; gap:7mm; }
+.grid + section { margin-top:4mm; }
 .fig img { width:100%; display:block; border:1px solid var(--line); border-radius:2mm; }
 .cap { color:var(--muted); font-size:7.8pt; margin-top:1.5mm; }
 ul { margin:0; padding-left:4.2mm; }
@@ -82,11 +83,12 @@ def header(t):
 <h1>{esc(t['title'])}</h1><p class="lead">{esc(t['lead'])}</p></header>"""
 
 
-def equipment(code, t, img_b64):
+def equipment(code, t, img_b64, photo_b64):
     specs = "".join(f"<tr><td>{esc(k)}</td><td class='v'>{esc(v)}</td></tr>" for k, v in SPECS[code])
     main = f"""
 <div class="grid">
-  <div class="fig"><img src="data:image/webp;base64,{img_b64}" alt="Parostok"><div class="cap">{esc(t['caption'])}</div></div>
+  <div class="fig"><img src="data:image/webp;base64,{img_b64}" alt="Parostok"><div class="cap">{esc(t['caption'])}</div>
+    <img src="data:image/jpeg;base64,{photo_b64}" alt="" style="margin-top:4mm;height:34mm;object-fit:cover"><div class="cap">{esc(t['photo'])}</div></div>
   <div>
     <section><h2>{esc(t['h_how'])}</h2>{ul([esc(x) for x in t['how']])}</section>
     <section><h2>{esc(t['h_specs'])}</h2><table>{specs}</table></section>
@@ -142,9 +144,10 @@ def pdf(html_path, pdf_path):
 def main():
     OUT.mkdir(exist_ok=True)
     img = base64.b64encode((HERE / "parostok_new_design.webp").read_bytes()).decode()
+    photo = base64.b64encode((HERE / "lab_test_2026.jpg").read_bytes()).decode()
     docs = []
     for code in ("en", "fr", "nl"):
-        docs.append((f"parostok_equipment_{code}", equipment(code, EQUIPMENT[code], img)))
+        docs.append((f"parostok_equipment_{code}", equipment(code, EQUIPMENT[code], img, photo)))
         docs.append((f"parostok_tulip_bulbs_{code}", tulip(code, TULIP[code])))
     for name, doc in docs:
         h = OUT / f"{name}.html"
