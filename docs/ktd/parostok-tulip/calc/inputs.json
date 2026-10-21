@@ -1,0 +1,131 @@
+{
+  "_note": "Вхідні дані розрахунку. Кожен параметр має статус. ASSUMPTION/ANALOG підлягають заміні виміряними значеннями (див. ПМ, розд. 4).",
+  "bulb_grades_cm": {
+    "value": [
+      [
+        10,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        12,
+        14
+      ]
+    ],
+    "status": "SOURCED",
+    "source": "S-GRADE: класи луковиць за обхватом, см (blog.dutch-bulbs.com; dutchgrown.com). 12/+ обмежено зверху 14 см як ASSUMPTION для розрахунку"
+  },
+  "bulb_density_kg_m3": {
+    "value": [
+      1000,
+      1100
+    ],
+    "status": "ASSUMPTION",
+    "source": "Не знайдено; виміряти (ПМ 4.1)"
+  },
+  "shape_factor_vs_sphere": {
+    "value": [
+      0.6,
+      1.0
+    ],
+    "status": "ASSUMPTION",
+    "source": "Луковиця яйцеподібна, об'єм < кулі того ж обхвату; 1.0 = верхня межа"
+  },
+  "moisture_wet_basis": {
+    "value": [
+      0.55,
+      0.75
+    ],
+    "status": "ASSUMPTION",
+    "source": "Не знайдено; виміряти висушуванням (ПМ 4.1)"
+  },
+  "siebel_cp_kj_kgk": {
+    "formula": "cp = 3.35*w + 0.84",
+    "status": "SOURCED",
+    "source": "S-SIEBEL: формула Siebel для харчових продуктів вище точки замерзання (ASHRAE Refrigeration Handbook)"
+  },
+  "t_inlet_c": {
+    "value": 18,
+    "status": "ASSUMPTION",
+    "source": "Зберігання після викопування ~18-20 °C (S-STORE, джерело слабке)"
+  },
+  "t_core_target_c": {
+    "value": [
+      30,
+      40
+    ],
+    "status": "SOURCED_FOR_SEEDS_ONLY",
+    "source": "evidence/assumptions.json: робоча температура насіння 30-40 °C. Для луковиць НЕ доведено"
+  },
+  "t_core_hard_limit_c": {
+    "value": 42,
+    "status": "ENGINEERING_CHOICE",
+    "source": "Запас 3 °C нижче порогу ~45 °C, вище якого гаряча вода вважається шкідливою для луковиць тюльпана (S-HWT-WUR)"
+  },
+  "throughput_t_per_h": {
+    "value": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "status": "OWNER_DECISION_REQUIRED",
+    "source": "Цільова продуктивність не задана; розраховано сітку"
+  },
+  "magnetron_efficiency": {
+    "value": [
+      0.65,
+      0.75
+    ],
+    "status": "ASSUMPTION",
+    "source": "Типовий ККД магнетрона 2450 МГц; уточнити за даташитом обраного генератора"
+  },
+  "applicator_coupling_efficiency": {
+    "value": [
+      0.6,
+      0.85
+    ],
+    "status": "ASSUMPTION",
+    "source": "Частка поглиненої продуктом потужності; визначається калориметрично (ПМ 4.3)"
+  },
+  "penetration_depth_cm_2450": {
+    "value": 0.9,
+    "status": "ANALOG",
+    "source": "S-PEN: сира картопля ~0.9 см при 2450 МГц (pueschner.com). Для луковиці тюльпана не виміряно"
+  },
+  "belt_width_m": {
+    "value": 1.0,
+    "status": "ENGINEERING_CHOICE",
+    "source": "Ширина робочої зони одношарового конвеєра; уточнюється в ескізному проєкті"
+  },
+  "bulb_footprint_factor": {
+    "value": 1.3,
+    "status": "ASSUMPTION",
+    "source": "Площа на одну луковицу = (k*d)^2 в одношаровому розкладі; k>1 — проміжки"
+  },
+  "exposure_time_s": {
+    "value": [
+      50,
+      110
+    ],
+    "status": "SOURCED_FOR_SEEDS_ONLY",
+    "source": "evidence/evidence_dataset_2003_table2.csv: експозиція 50-110 с для насіння. Для луковиць НЕ доведено"
+  },
+  "design_bulb_mass_g": {
+    "value": 25,
+    "status": "ASSUMPTION",
+    "source": "Розрахункова маса луковиці для оцінки конвеєра; в межах діапазону grades"
+  },
+  "design_bulb_diameter_mm": {
+    "value": 38,
+    "status": "SOURCED",
+    "source": "Клас 12 см: d = C/pi = 38.2 мм (S-GRADE)"
+  },
+  "mw_module_kw": {
+    "value": 1.5,
+    "status": "SOURCED",
+    "source": "модуль 1,5 кВт установок Artemida / Microstim-2 (S-INFO-EN с. 4)"
+  }
+}

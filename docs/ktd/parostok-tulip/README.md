@@ -1,0 +1,41 @@
+# КТД «Паросток-Т» — установка НВЧ-обробки луковиць тюльпана
+
+Редакція 0.1, 2026-10-20. Стадія: **технічна пропозиція**. Не затверджено.
+
+## Склад пакета
+
+| Код (ДСТУ ГОСТ 2.102) | Документ | Файл | Статус |
+|---|---|---|---|
+| ТЗ | Технічне завдання | `01_TZ.md` | DRAFT_FOR_OWNER_REVIEW |
+| ПЗ | Пояснювальна записка | `02_PZ.md` | DRAFT_FOR_OWNER_REVIEW |
+| ПМ | Програма та методика випробувань | `03_PM.md` | DRAFT_FOR_OWNER_REVIEW |
+| — | Реєстр джерел і прогалин | `04_registr.yaml` | DRAFT |
+| РР | Розрахунок енергобалансу | `calc/energy_balance.py` | COMPUTED_FROM_ASSUMPTIONS, тести PASS |
+| КШ | Орієнтовний кошторис і графік | `05_koshtorys.md`, `calc/budget_timeline.py` | COMPUTED_FROM_ASSUMPTIONS, тести PASS |
+| СК, ВП | Складальне креслення, специфікація | — | BLOCKED: G-BASE, G-CAP, ПМ етапи 1–3 |
+| Е3 | Схема електрична принципова | — | BLOCKED: G-BASE, G-CAP |
+| ТУ, КЕ, ПС | Технічні умови, керівництво з експлуатації, паспорт | — | BLOCKED: після попередніх випробувань |
+
+## Доказовий статус
+
+- Ефект НВЧ-обробки на луковицях тюльпана: **NOT_PROVEN** (досліджень не знайдено; дані КАРЕ — насіння).
+- Безпека для квіткової бруньки: **PHYSICAL_VALIDATION_REQUIRED**.
+- Повторне використання генераторного модуля 1,5 кВт: **EXISTING_ARTIFACT_REUSABLE** — за умови КД (G-BASE).
+- Фітосанітарне знезараження луковиць: поза призначенням редакції 0.1.
+
+## Перерахунок
+
+```bash
+cd docs/ktd/parostok-tulip/calc
+python3 energy_balance.py --write
+python3 budget_timeline.py --write
+python3 -m pytest -q
+cd .. && sha256sum -c SHA256SUMS
+```
+
+## Атрибуція
+
+BUILDER WORK: документи та розрахунок підготував Claude Code за завданням власника
+(Є. Васильєв). Мету поставила людина. JARVIS runtime (`conduct()`, `agent/tools.py`)
+у цьому репозиторії відсутній і не викликався — `EXAM_CONTEXT_NOT_BOUND` для JARVIS-шляху;
+PLM / Evidence Vault не задіяні. Цілісність пакета — `SHA256SUMS`.
