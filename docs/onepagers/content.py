@@ -2,26 +2,25 @@
 
 Кожне твердження має джерело в docs/ktd/parostok-tulip/04_registr.yaml або
 в профілі KARE (grantwriter_kare.zip). Заборонені твердження профілю
-(certified, guaranteed yield, proven results, independently verified,
-world's first) і CONFLICTING_UNRESOLVED цифри («до +65 %», «у 2–4 рази»)
-не використовуються.
+(guaranteed yield, proven results, independently verified, world's first)
+і CONFLICTING_UNRESOLVED цифри («до +65 %», «у 2–4 рази») не використовуються.
+«Certified» — лише в точному формулюванні сертифікатів EUTEST MD25127601
+і ISO 13485 (8О139.СУЯ.14-25), без узагальнень.
+Несуча частота не вказується (рішення власника 2026-10-21); суми не вказуються.
 """
 
 CONTACT = "PE SPE “KARE” · Odesa, Ukraine · mwparostok@gmail.com · www.parostokmw.com"
 
 SPECS = {
-    "en": [("Power supply", "110 / 220 V"), ("Power consumption", "3.0–6.0 kW"),
+    "en": [("Power supply", "220 V (110 V version on request)"), ("Power consumption", "3.0–6.0 kW"),
            ("Throughput", "0.4–2.0 t/h"), ("Weight", "210 kg"),
-           ("Dimensions", "70 × 90 × 206 cm"), ("Loading", "from the top"),
-           ("Microwave frequency", "2.45 GHz (ISM band)")],
-    "fr": [("Alimentation", "110 / 220 V"), ("Puissance absorbée", "3,0–6,0 kW"),
+           ("Dimensions", "70 × 90 × 206 cm"), ("Loading", "from the top")],
+    "fr": [("Alimentation", "220 V (version 110 V sur demande)"), ("Puissance absorbée", "3,0–6,0 kW"),
            ("Débit", "0,4–2,0 t/h"), ("Poids", "210 kg"),
-           ("Dimensions", "70 × 90 × 206 cm"), ("Chargement", "par le haut"),
-           ("Fréquence micro-ondes", "2,45 GHz (bande ISM)")],
-    "nl": [("Voeding", "110 / 220 V"), ("Opgenomen vermogen", "3,0–6,0 kW"),
+           ("Dimensions", "70 × 90 × 206 cm"), ("Chargement", "par le haut")],
+    "nl": [("Voeding", "220 V (versie 110 V op aanvraag)"), ("Opgenomen vermogen", "3,0–6,0 kW"),
            ("Capaciteit", "0,4–2,0 t/u"), ("Gewicht", "210 kg"),
-           ("Afmetingen", "70 × 90 × 206 cm"), ("Vullen", "langs boven"),
-           ("Microgolffrequentie", "2,45 GHz (ISM-band)")],
+           ("Afmetingen", "70 × 90 × 206 cm"), ("Vullen", "langs boven")],
 }
 
 EQUIPMENT = {
@@ -29,12 +28,12 @@ EQUIPMENT = {
         "lang": "en",
         "kicker": "Equipment",
         "title": "Chemical-free microwave seed treatment",
-        "lead": "Parostok treats seed before sowing with a controlled 2.45 GHz microwave field. "
+        "lead": "Parostok treats seed before sowing with a controlled microwave field. "
                 "Dry process, no chemicals, no residues on the seed.",
         "caption": "New design (rendering). The specifications refer to the current production model.",
         "h_how": "How it works",
         "how": ["Seed flows continuously through a controlled microwave field.",
-                "The dose is set by exposure time at fixed power; each crop and variety has its own mode.",
+                "A library of treatment modes, built from earlier trials and test implementations, is kept in non-volatile memory; each crop and variety has its own mode.",
                 "Treatment can be offered as a service or with the machine installed on site."],
         "h_specs": "Key specifications (current model)",
         "h_evidence": "Evidence to date",
@@ -48,6 +47,11 @@ EQUIPMENT = {
             "<b>Research since 2000</b> with Ukrainian research institutes: 24 crops in the 2000–2001 programme, "
             "replicated field trials on winter wheat.",
         ],
+        "h_conf": "Conformity and quality",
+        "conf": [
+            "<b>Parostok KM:</b> technical file reviewed by EUTEST against the Machinery (2006/42/EC), Low Voltage (2014/35/EU) and EMC (2014/30/EU) directives — certificate of conformity MD25127601, valid until 14.03.2030 (voluntary review, not a notified-body procedure).",
+            "<b>Manufacturer:</b> quality management system certified to EN ISO 13485:2016, certificate 8O139.СУЯ.14-25, valid until 26.02.2028.",
+        ],
         "h_for": "For whom",
         "for": "Seed producers and processors, cooperatives and large farms — especially for seed lots "
                "below their germination standard.",
@@ -58,12 +62,12 @@ EQUIPMENT = {
         "lang": "fr",
         "kicker": "Équipement",
         "title": "Traitement des semences par micro-ondes, sans chimie",
-        "lead": "Parostok traite les semences avant le semis par un champ micro-ondes contrôlé de 2,45 GHz. "
+        "lead": "Parostok traite les semences avant le semis par un champ micro-ondes contrôlé. "
                 "Procédé à sec, sans produits chimiques, sans résidus sur la semence.",
         "caption": "Nouveau design (rendu). Les caractéristiques concernent le modèle de production actuel.",
         "h_how": "Principe",
         "how": ["Les semences traversent en flux continu un champ micro-ondes contrôlé.",
-                "La dose est réglée par la durée d’exposition à puissance fixe ; chaque culture et variété a son propre mode.",
+                "Une bibliothèque de modes de traitement, issue d’essais et d’implantations pilotes antérieurs, est conservée en mémoire non volatile ; chaque culture et variété a son propre mode.",
                 "Le traitement est proposé comme prestation de service ou avec la machine installée sur site."],
         "h_specs": "Caractéristiques principales (modèle actuel)",
         "h_evidence": "Résultats à ce jour",
@@ -77,6 +81,11 @@ EQUIPMENT = {
             "<b>Recherche depuis 2000</b> avec des instituts de recherche ukrainiens : 24 cultures dans le programme 2000–2001, "
             "essais au champ répétés sur blé d’hiver.",
         ],
+        "h_conf": "Conformité et qualité",
+        "conf": [
+            "<b>Parostok KM :</b> dossier technique examiné par EUTEST au regard des directives Machines (2006/42/CE), Basse tension (2014/35/UE) et CEM (2014/30/UE) — certificat de conformité MD25127601, valable jusqu’au 14.03.2030 (examen volontaire, hors procédure d’organisme notifié).",
+            "<b>Fabricant :</b> système de management de la qualité certifié EN ISO 13485:2016, certificat 8O139.СУЯ.14-25, valable jusqu’au 26.02.2028.",
+        ],
         "h_for": "Pour qui",
         "for": "Producteurs et conditionneurs de semences, coopératives et grandes exploitations — en particulier pour "
                "les lots de semences sous la norme de germination.",
@@ -87,12 +96,12 @@ EQUIPMENT = {
         "lang": "nl-BE",
         "kicker": "Uitrusting",
         "title": "Zaadbehandeling met microgolven, zonder chemie",
-        "lead": "Parostok behandelt zaaizaad vóór het zaaien met een gecontroleerd microgolfveld van 2,45 GHz. "
+        "lead": "Parostok behandelt zaaizaad vóór het zaaien met een gecontroleerd microgolfveld. "
                 "Droog proces, zonder chemicaliën, geen residu op het zaad.",
         "caption": "Nieuw ontwerp (rendering). De specificaties gelden voor het huidige productiemodel.",
         "h_how": "Werking",
         "how": ["Het zaad loopt in een continue stroom door een gecontroleerd microgolfveld.",
-                "De dosis wordt ingesteld via de blootstellingstijd bij vast vermogen; elk gewas en elk ras heeft een eigen stand.",
+                "Een bibliotheek van behandelingsstanden, opgebouwd uit eerdere proeven en testimplementaties, staat in niet-vluchtig geheugen; elk gewas en elk ras heeft een eigen stand.",
                 "De behandeling kan als dienst worden aangeboden of met de machine ter plaatse."],
         "h_specs": "Belangrijkste specificaties (huidig model)",
         "h_evidence": "Resultaten tot nu toe",
@@ -105,6 +114,11 @@ EQUIPMENT = {
             "Enkele percelen zonder herhaling — enkel indicatief.",
             "<b>Onderzoek sinds 2000</b> met Oekraïense onderzoeksinstituten: 24 gewassen in het programma 2000–2001, "
             "herhaalde veldproeven met wintertarwe.",
+        ],
+        "h_conf": "Conformiteit en kwaliteit",
+        "conf": [
+            "<b>Parostok KM:</b> technisch dossier door EUTEST getoetst aan de Machinerichtlijn (2006/42/EG), de Laagspanningsrichtlijn (2014/35/EU) en de EMC-richtlijn (2014/30/EU) — conformiteitscertificaat MD25127601, geldig tot 14.03.2030 (vrijwillige toetsing, geen procedure van een aangemelde instantie).",
+            "<b>Fabrikant:</b> kwaliteitsmanagementsysteem gecertificeerd volgens EN ISO 13485:2016, certificaat 8O139.СУЯ.14-25, geldig tot 26.02.2028.",
         ],
         "h_for": "Voor wie",
         "for": "Zaadproducenten en -verwerkers, coöperaties en grote landbouwbedrijven — vooral voor zaadpartijen "
@@ -123,7 +137,7 @@ TULIP = {
                 "propose to develop a dedicated machine for chemical-free treatment of living tulip bulbs — designed "
                 "first of all not to harm the bulb.",
         "h_why": "Why a dedicated machine",
-        "why": ["A tulip bulb (32–45 mm) is several times larger than the depth a 2.45 GHz field penetrates (about 1 cm).",
+        "why": ["A tulip bulb (32–45 mm) is several times larger than the depth the microwave field penetrates (about 1 cm).",
                 "In round objects of this size microwave heating can concentrate at the centre — exactly where the flower bud sits.",
                 "Seed equipment therefore cannot simply be reused: bulbs need their own handling, dosing and control."],
         "h_design": "Design principles",
@@ -131,6 +145,8 @@ TULIP = {
                    "Dose delivered in sections, with equalisation zones in between.",
                    "<b>Hard limit: the bulb core never exceeds 42 °C.</b> Hot-water treatment above about 45 °C is considered harmful to tulip bulbs.",
                    "Optional low-heat pulsed mode.",
+                   "Mode library in non-volatile memory; AI selects and adjusts the dose within the qualified limits — the 42 °C limit is held by independent interlocks that the AI cannot override.",
+                   "Remote monitoring and control: the line can run fully autonomously.",
                    "Every batch logged: power, temperatures, recipe.",
                    "Easy-to-clean contact surfaces, so that disease is not carried between lots."],
         "h_status": "Where we stand",
@@ -138,10 +154,10 @@ TULIP = {
                   "study on living tulip bulbs. The programme therefore starts with bud-safety and pilot forcing trials "
                   "against an untreated control, and stops if they show no benefit.",
         "h_plan": "Staged programme",
-        "plan": [("1", "Bulb properties, bud-safety threshold, pilot forcing → go / no-go", "6–9 months", "€21–74k"),
-                 ("2", "Design and prototype machine (0.5 t/h)", "about 2 years", "after gate 1"),
-                 ("3", "Independent forcing and field trials", "one season", "after phase 2")],
-        "plan_total": "Indicative total: up to about €0.5 million. Evidence-based result expected in 2029–2030.",
+        "plan": [("1", "Bulb properties, bud-safety threshold, pilot forcing → go / no-go", "6–9 months"),
+                 ("2", "Design and prototype machine (0.5 t/h)", "about 2 years"),
+                 ("3", "Independent forcing and field trials", "one season")],
+        "plan_total": "Evidence-based result expected in 2029–2030.",
         "h_seek": "What we are looking for in Belgium",
         "seek": ["Growers and forcers who can provide bulbs and forcing space for trials.",
                  "An independent research partner for the safety and forcing trials.",
@@ -151,11 +167,11 @@ TULIP = {
         "line_cap": "Functional diagram of the planned machine — not a drawing of an existing unit.",
         "h_specs": "Target specifications (prototype, draft)",
         "specs": [("Product", "living tulip bulbs, 10/11 – 12/+ cm"), ("Prototype throughput", "0.5 t/h (≈ 20 000 bulbs/h)"),
-                  ("Microwave frequency", "2.45 GHz (ISM band)"), ("Generators", "4–12 × 1.5 kW modules"),
+                  ("Generators", "4–12 × 1.5 kW modules"),
                   ("Bulb core temperature", "≤ 42 °C, hard limit"), ("Handling", "single layer, ≈ 1 m wide"),
-                  ("Power supply", "3 × 400 V, 50 Hz"), ("Target compliance", "CE: (EU) 2023/1230, LVD, EMC")],
+                  ("Control", "mode library, AI, remote monitoring"), ("Power supply", "220 V (110 V version on request)"), ("Target compliance", "CE: (EU) 2023/1230, LVD, EMC")],
         "specs_note": "Values follow the draft technical specification and are fixed only after the bulb tests.",
-        "foot": "October 2026. Estimates are indicative and not a commercial offer.",
+        "foot": "October 2026. Target values are confirmed only after the bulb tests.",
     },
     "fr": {
         "lang": "fr",
@@ -165,7 +181,7 @@ TULIP = {
                 "proposons de développer une machine dédiée au traitement sans chimie des bulbes de tulipe vivants — "
                 "conçue avant tout pour ne pas abîmer le bulbe.",
         "h_why": "Pourquoi une machine dédiée",
-        "why": ["Un bulbe de tulipe (32–45 mm) est plusieurs fois plus grand que la profondeur de pénétration d’un champ de 2,45 GHz (environ 1 cm).",
+        "why": ["Un bulbe de tulipe (32–45 mm) est plusieurs fois plus grand que la profondeur de pénétration du champ micro-ondes (environ 1 cm).",
                 "Dans des objets ronds de cette taille, le chauffage micro-ondes peut se concentrer au centre — là où se trouve le bourgeon floral.",
                 "On ne peut donc pas simplement réutiliser l’équipement pour semences : les bulbes demandent leur propre manutention, dosage et contrôle."],
         "h_design": "Principes de conception",
@@ -173,6 +189,8 @@ TULIP = {
                    "Dose appliquée par sections, avec des zones d’égalisation entre elles.",
                    "<b>Limite absolue : le cœur du bulbe ne dépasse jamais 42 °C.</b> Un traitement à l’eau chaude au-delà d’environ 45 °C est considéré comme nuisible aux bulbes de tulipe.",
                    "Mode pulsé à faible échauffement en option.",
+                   "Bibliothèque de modes en mémoire non volatile ; l’IA choisit et ajuste la dose dans les limites qualifiées — la limite de 42 °C est tenue par des verrouillages indépendants que l’IA ne peut pas contourner.",
+                   "Surveillance et commande à distance : la ligne peut fonctionner de manière entièrement autonome.",
                    "Chaque lot enregistré : puissance, températures, recette.",
                    "Surfaces de contact faciles à nettoyer, pour ne pas transmettre de maladies d’un lot à l’autre."],
         "h_status": "Où nous en sommes",
@@ -180,10 +198,10 @@ TULIP = {
                   "aucune étude publiée sur des bulbes de tulipe vivants. Le programme commence donc par des essais de sécurité "
                   "du bourgeon et de forçage pilote face à un témoin non traité, et s’arrête s’ils ne montrent aucun bénéfice.",
         "h_plan": "Programme par étapes",
-        "plan": [("1", "Propriétés des bulbes, seuil de sécurité du bourgeon, forçage pilote → décision go / no-go", "6–9 mois", "21–74 k€"),
-                 ("2", "Conception et prototype de machine (0,5 t/h)", "environ 2 ans", "après l’étape 1"),
-                 ("3", "Essais indépendants de forçage et au champ", "une saison", "après l’étape 2")],
-        "plan_total": "Total indicatif : jusqu’à environ 0,5 million €. Résultat fondé sur des preuves attendu en 2029–2030.",
+        "plan": [("1", "Propriétés des bulbes, seuil de sécurité du bourgeon, forçage pilote → décision go / no-go", "6–9 mois"),
+                 ("2", "Conception et prototype de machine (0,5 t/h)", "environ 2 ans"),
+                 ("3", "Essais indépendants de forçage et au champ", "une saison")],
+        "plan_total": "Résultat fondé sur des preuves attendu en 2029–2030.",
         "h_seek": "Ce que nous recherchons en Belgique",
         "seek": ["Producteurs et forceurs pouvant fournir des bulbes et de l’espace de forçage pour les essais.",
                  "Un partenaire de recherche indépendant pour les essais de sécurité et de forçage.",
@@ -193,11 +211,11 @@ TULIP = {
         "line_cap": "Schéma fonctionnel de la machine prévue — pas le dessin d’une machine existante.",
         "h_specs": "Caractéristiques visées (prototype, projet)",
         "specs": [("Produit", "bulbes de tulipe vivants, 10/11 – 12/+ cm"), ("Débit du prototype", "0,5 t/h (≈ 20 000 bulbes/h)"),
-                  ("Fréquence micro-ondes", "2,45 GHz (bande ISM)"), ("Générateurs", "4–12 modules de 1,5 kW"),
+                  ("Générateurs", "4–12 modules de 1,5 kW"),
                   ("Température au cœur du bulbe", "≤ 42 °C, limite absolue"), ("Manutention", "une couche, ≈ 1 m de large"),
-                  ("Alimentation", "3 × 400 V, 50 Hz"), ("Conformité visée", "CE : (UE) 2023/1230, BT, CEM")],
+                  ("Commande", "bibliothèque de modes, IA, supervision à distance"), ("Alimentation", "220 V (version 110 V sur demande)"), ("Conformité visée", "CE : (UE) 2023/1230, BT, CEM")],
         "specs_note": "Valeurs issues du cahier des charges provisoire ; elles ne seront fixées qu’après les essais sur bulbes.",
-        "foot": "Octobre 2026. Les estimations sont indicatives et ne constituent pas une offre commerciale.",
+        "foot": "Octobre 2026. Les valeurs visées ne seront confirmées qu’après les essais sur bulbes.",
     },
     "nl": {
         "lang": "nl-BE",
@@ -207,7 +225,7 @@ TULIP = {
                 "we een specifieke machine ontwikkelen voor de behandeling zonder chemie van levende tulpenbollen — "
                 "in de eerste plaats ontworpen om de bol niet te beschadigen.",
         "h_why": "Waarom een aparte machine",
-        "why": ["Een tulpenbol (32–45 mm) is meerdere keren groter dan de indringdiepte van een veld van 2,45 GHz (ongeveer 1 cm).",
+        "why": ["Een tulpenbol (32–45 mm) is meerdere keren groter dan de indringdiepte van het microgolfveld (ongeveer 1 cm).",
                 "In ronde objecten van deze grootte kan de microgolfopwarming zich in het midden concentreren — precies waar de bloemknop zit.",
                 "Zaaduitrusting kan dus niet zomaar hergebruikt worden: bollen vragen een eigen aanvoer, dosering en controle."],
         "h_design": "Ontwerpprincipes",
@@ -215,6 +233,8 @@ TULIP = {
                    "Dosis in secties, met egalisatiezones daartussen.",
                    "<b>Harde grens: de kern van de bol komt nooit boven 42 °C.</b> Warmwaterbehandeling boven ongeveer 45 °C wordt als schadelijk voor tulpenbollen beschouwd.",
                    "Optionele gepulste stand met weinig opwarming.",
+                   "Bibliotheek van standen in niet-vluchtig geheugen; AI kiest en regelt de dosis binnen de gekwalificeerde grenzen — de grens van 42 °C wordt bewaakt door onafhankelijke vergrendelingen die de AI niet kan omzeilen.",
+                   "Bewaking en bediening op afstand: de lijn kan volledig autonoom werken.",
                    "Elke partij geregistreerd: vermogen, temperaturen, recept.",
                    "Makkelijk te reinigen contactoppervlakken, zodat ziekten niet tussen partijen worden overgedragen."],
         "h_status": "Waar we staan",
@@ -222,10 +242,10 @@ TULIP = {
                   "studie over levende tulpenbollen. Het programma start daarom met proeven op de veiligheid van de bloemknop "
                   "en een proefbroei tegenover een onbehandelde controle, en stopt als die geen voordeel tonen.",
         "h_plan": "Gefaseerd programma",
-        "plan": [("1", "Eigenschappen van de bollen, veiligheidsdrempel van de knop, proefbroei → go / no-go", "6–9 maanden", "€ 21–74 k"),
-                 ("2", "Ontwerp en prototype van de machine (0,5 t/u)", "ongeveer 2 jaar", "na fase 1"),
-                 ("3", "Onafhankelijke broei- en veldproeven", "één seizoen", "na fase 2")],
-        "plan_total": "Indicatief totaal: tot ongeveer € 0,5 miljoen. Onderbouwd resultaat verwacht in 2029–2030.",
+        "plan": [("1", "Eigenschappen van de bollen, veiligheidsdrempel van de knop, proefbroei → go / no-go", "6–9 maanden"),
+                 ("2", "Ontwerp en prototype van de machine (0,5 t/u)", "ongeveer 2 jaar"),
+                 ("3", "Onafhankelijke broei- en veldproeven", "één seizoen")],
+        "plan_total": "Onderbouwd resultaat verwacht in 2029–2030.",
         "h_seek": "Wat we in België zoeken",
         "seek": ["Telers en broeiers die bollen en broeiruimte voor de proeven kunnen leveren.",
                  "Een onafhankelijke onderzoekspartner voor de veiligheids- en broeiproeven.",
@@ -235,10 +255,10 @@ TULIP = {
         "line_cap": "Functioneel schema van de geplande machine — geen tekening van een bestaande machine.",
         "h_specs": "Beoogde specificaties (prototype, ontwerp)",
         "specs": [("Product", "levende tulpenbollen, 10/11 – 12/+ cm"), ("Capaciteit prototype", "0,5 t/u (≈ 20 000 bollen/u)"),
-                  ("Microgolffrequentie", "2,45 GHz (ISM-band)"), ("Generatoren", "4–12 modules van 1,5 kW"),
+                  ("Generatoren", "4–12 modules van 1,5 kW"),
                   ("Kerntemperatuur van de bol", "≤ 42 °C, harde grens"), ("Behandeling", "één laag, ≈ 1 m breed"),
-                  ("Voeding", "3 × 400 V, 50 Hz"), ("Beoogde conformiteit", "CE: (EU) 2023/1230, LS, EMC")],
+                  ("Besturing", "standenbibliotheek, AI, bewaking op afstand"), ("Voeding", "220 V (versie 110 V op aanvraag)"), ("Beoogde conformiteit", "CE: (EU) 2023/1230, LS, EMC")],
         "specs_note": "Waarden volgen het ontwerp van het technisch lastenboek en worden pas na de proeven op bollen vastgelegd.",
-        "foot": "Oktober 2026. Ramingen zijn indicatief en geen commercieel aanbod.",
+        "foot": "Oktober 2026. Beoogde waarden worden pas na de proeven op bollen bevestigd.",
     },
 }

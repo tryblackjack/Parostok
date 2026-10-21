@@ -43,9 +43,9 @@ h2 { font-size:10.4pt; color:var(--blue-dark); margin:0 0 2mm; padding-bottom:1.
 ul { margin:0; padding-left:4.2mm; }
 li { margin:0 0 1.2mm; }
 table { width:100%; border-collapse:collapse; font-size:9.2pt; }
-td { padding:1.25mm 0; border-bottom:1px solid var(--line); vertical-align:top; }
+td { padding:0.85mm 0; border-bottom:1px solid var(--line); vertical-align:top; }
 td.v { text-align:right; font-weight:650; white-space:nowrap; padding-left:3mm; }
-section { margin-bottom:4.5mm; }
+section { margin-bottom:3.6mm; }
 .box { background:var(--tint); border-left:3px solid var(--blue); padding:3mm 4mm; border-radius:1mm; }
 .plan td { padding:1.6mm 1.5mm; }
 .plan td.n { width:7mm; font-weight:800; color:var(--blue); }
@@ -98,13 +98,14 @@ def equipment(code, t, img_b64, photo_b64):
     main = f"""
 <div class="grid">
   <div class="fig"><img src="data:image/webp;base64,{img_b64}" alt="Parostok"><div class="cap">{esc(t['caption'])}</div>
-    <img src="data:image/jpeg;base64,{photo_b64}" alt="" style="margin-top:4mm;height:34mm;object-fit:cover"><div class="cap">{esc(t['photo'])}</div></div>
+    <img src="data:image/jpeg;base64,{photo_b64}" alt="" style="margin-top:3mm;height:27mm;object-fit:cover"><div class="cap">{esc(t['photo'])}</div></div>
   <div>
     <section><h2>{esc(t['h_how'])}</h2>{ul([esc(x) for x in t['how']])}</section>
     <section><h2>{esc(t['h_specs'])}</h2><table>{specs}</table></section>
   </div>
 </div>
 <section><h2>{esc(t['h_evidence'])}</h2>{ul(t['evidence'])}</section>
+<section><h2>{esc(t['h_conf'])}</h2>{ul(t['conf'])}</section>
 <section class="box"><h2 style="border:0;padding:0;margin-bottom:1mm">{esc(t['h_for'])}</h2>{esc(t['for'])}</section>
 """
     return page(t["lang"], f"Parostok — {t['title']}", header(t), main, t["foot"])
@@ -154,8 +155,8 @@ def line_svg(labels):
 
 
 def tulip(code, t):
-    plan = "".join(f"<tr><td class='n'>{esc(n)}</td><td>{esc(d)}</td><td class='t'>{esc(tm)}</td><td class='c'>{esc(c)}</td></tr>"
-                   for n, d, tm, c in t["plan"])
+    plan = "".join(f"<tr><td class='n'>{esc(n)}</td><td>{esc(d)}</td><td class='t'>{esc(tm)}</td></tr>"
+                   for n, d, tm in t["plan"])
     specs = "".join(f"<tr><td>{esc(k)}</td><td class='v'>{esc(v)}</td></tr>" for k, v in t["specs"])
     main = f"""
 <section class="keep"><h2>{esc(t['h_line'])}</h2>{line_svg(t['line'])}<div class="cap">{esc(t['line_cap'])}</div></section>
