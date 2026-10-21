@@ -12,13 +12,13 @@
 CONTACT = "PE SPE “KARE” · Odesa, Ukraine · mwparostok@gmail.com · www.parostokmw.com"
 
 SPECS = {
-    "en": [("Power supply", "220 V (110 V version on request)"), ("Power consumption", "3.0–6.0 kW"),
+    "en": [("Power supply", "110 / 220 V; 380 V for customer-specific builds"), ("Power consumption", "3.0–6.0 kW"),
            ("Throughput", "0.4–2.0 t/h"), ("Weight", "210 kg"),
            ("Dimensions", "70 × 90 × 206 cm"), ("Loading", "from the top")],
-    "fr": [("Alimentation", "220 V (version 110 V sur demande)"), ("Puissance absorbée", "3,0–6,0 kW"),
+    "fr": [("Alimentation", "110 / 220 V ; 380 V pour versions sur mesure"), ("Puissance absorbée", "3,0–6,0 kW"),
            ("Débit", "0,4–2,0 t/h"), ("Poids", "210 kg"),
            ("Dimensions", "70 × 90 × 206 cm"), ("Chargement", "par le haut")],
-    "nl": [("Voeding", "220 V (versie 110 V op aanvraag)"), ("Opgenomen vermogen", "3,0–6,0 kW"),
+    "nl": [("Voeding", "110 / 220 V; 380 V voor maatwerkversies"), ("Opgenomen vermogen", "3,0–6,0 kW"),
            ("Capaciteit", "0,4–2,0 t/u"), ("Gewicht", "210 kg"),
            ("Afmetingen", "70 × 90 × 206 cm"), ("Vullen", "langs boven")],
 }
@@ -169,7 +169,7 @@ TULIP = {
         "specs": [("Product", "living tulip bulbs, 10/11 – 12/+ cm"), ("Prototype throughput", "0.5 t/h (≈ 20 000 bulbs/h)"),
                   ("Generators", "4–12 × 1.5 kW modules"),
                   ("Bulb core temperature", "≤ 42 °C, hard limit"), ("Handling", "single layer, ≈ 1 m wide"),
-                  ("Control", "mode library, AI, remote monitoring"), ("Power supply", "220 V (110 V version on request)"), ("Target compliance", "CE: (EU) 2023/1230, LVD, EMC")],
+                  ("Control", "mode library, AI, remote monitoring"), ("Power supply", "380 V, sized to the customer’s throughput"), ("Target compliance", "CE: (EU) 2023/1230, LVD, EMC")],
         "specs_note": "Values follow the draft technical specification and are fixed only after the bulb tests.",
         "foot": "October 2026. Target values are confirmed only after the bulb tests.",
     },
@@ -213,7 +213,7 @@ TULIP = {
         "specs": [("Produit", "bulbes de tulipe vivants, 10/11 – 12/+ cm"), ("Débit du prototype", "0,5 t/h (≈ 20 000 bulbes/h)"),
                   ("Générateurs", "4–12 modules de 1,5 kW"),
                   ("Température au cœur du bulbe", "≤ 42 °C, limite absolue"), ("Manutention", "une couche, ≈ 1 m de large"),
-                  ("Commande", "bibliothèque de modes, IA, supervision à distance"), ("Alimentation", "220 V (version 110 V sur demande)"), ("Conformité visée", "CE : (UE) 2023/1230, BT, CEM")],
+                  ("Commande", "bibliothèque de modes, IA, supervision à distance"), ("Alimentation", "380 V, selon le débit du client"), ("Conformité visée", "CE : (UE) 2023/1230, BT, CEM")],
         "specs_note": "Valeurs issues du cahier des charges provisoire ; elles ne seront fixées qu’après les essais sur bulbes.",
         "foot": "Octobre 2026. Les valeurs visées ne seront confirmées qu’après les essais sur bulbes.",
     },
@@ -257,7 +257,7 @@ TULIP = {
         "specs": [("Product", "levende tulpenbollen, 10/11 – 12/+ cm"), ("Capaciteit prototype", "0,5 t/u (≈ 20 000 bollen/u)"),
                   ("Generatoren", "4–12 modules van 1,5 kW"),
                   ("Kerntemperatuur van de bol", "≤ 42 °C, harde grens"), ("Behandeling", "één laag, ≈ 1 m breed"),
-                  ("Besturing", "standenbibliotheek, AI, bewaking op afstand"), ("Voeding", "220 V (versie 110 V op aanvraag)"), ("Beoogde conformiteit", "CE: (EU) 2023/1230, LS, EMC")],
+                  ("Besturing", "standenbibliotheek, AI, bewaking op afstand"), ("Voeding", "380 V, afgestemd op de capaciteit van de klant"), ("Beoogde conformiteit", "CE: (EU) 2023/1230, LS, EMC")],
         "specs_note": "Waarden volgen het ontwerp van het technisch lastenboek en worden pas na de proeven op bollen vastgelegd.",
         "foot": "Oktober 2026. Beoogde waarden worden pas na de proeven op bollen bevestigd.",
     },
